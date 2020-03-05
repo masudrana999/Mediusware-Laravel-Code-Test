@@ -94,7 +94,7 @@
         })(window, document, 'script', 'userGuidingLayer', '3592590ID');
     </script>
 </head>
-<body id="myvueapp">
+<body >
 <?php
 if(\Auth::check()){
 

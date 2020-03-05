@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="container-fluid app-body">
+<div class="container-fluid app-body" id="vueappp">
 	
 
 	<div class="row">
@@ -51,12 +51,12 @@
 			    	</thead> 
 			    	<tbody> 
 
-			    		<tr>
-			    			<td>Hello1</td>
-			    			<td>Hello12</td>
-			    			<td>Hello123</td>
-			    			<td>Hello1234</td>
-			    			<td>Hello12345</td>
+			    		<tr v-for="post in posts">
+			    			<td>{{ post.group_info.name }}</td>
+			    			<td>{{ post.group_info.type }}</td>
+			    			<td><img :src="post.account_info.avatar" alt="" width="40" height="40"></td>
+			    			<td>{{ post.post_text }}</td>
+			    			<td>{{ post.sent_at }}</td>
 			    		</tr>
 
 			    	</tbody> 
@@ -73,13 +73,14 @@
 
 <?php $__env->startSection('style'); ?>
 	<!-- Datepicker -->
-	<link href='bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
 
 	<!-- Datepicker -->
-	<script src='bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+	<script src='/js/vueapp.js' type='text/javascript'></script>
 
 	<!-- Script -->
 	<script type="text/javascript">

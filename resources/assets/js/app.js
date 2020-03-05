@@ -12,42 +12,42 @@ require('./bulk');
 
 
 
-window.Vue = require('vue');
-window.axios = require('axios');
+// window.Vue = require('vue');
+// window.axios = require('axios');
 
-console.log('After Axiossssssssssss');
+// console.log('After Axiossssssssssss');
 
-Vue.component('pagination', require('./components/PaginationComponent.vue').default);
+// Vue.component('pagination', require('./components/PaginationComponent.vue'));
 
-const app = new Vue({
-    el: '#myvueapp',
+// const app = new Vue({
+//     el: '#myvueapp',
 
-    data: {
-            posts: {},
-            pagination: {
-                'current_page': 1
-            }
-        },
+//     data: {
+//             posts: {},
+//             pagination: {
+//                 'current_page': 1
+//             }
+//         },
 
-        methods: {
-            fetchPosts() {
-                axios.get('buffer-posts?page=' + this.pagination.current_page)
-                    .then(response => {
-                        this.posts = response.data.data.data;
-                        this.pagination = response.data.pagination;
+//         methods: {
+//             fetchPosts() {
+//                 axios.get('buffer-posts?page=' + this.pagination.current_page)
+//                     .then(response => {
+//                         this.posts = response.data.data.data;
+//                         this.pagination = response.data.pagination;
 
 
-                        console.log(this.posts);
-                        console.log('hello ');
-                    })
-                    .catch(error => {
-                        console.log(error.response.data);
-                    });
-            }
-        },
+//                         console.log(this.posts);
+//                         console.log('hello ');
+//                     })
+//                     .catch(error => {
+//                         console.log(error.response.data);
+//                     });
+//             }
+//         },
 
-        mounted() {
-            this.fetchPosts();
-        }
-});
+//         mounted() {
+//             this.fetchPosts();
+//         }
+// });
 
