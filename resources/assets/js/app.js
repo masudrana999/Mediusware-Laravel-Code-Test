@@ -9,3 +9,45 @@ require('./jquery-ui');
 require('./Chart');
 require('./bulk');
 
+
+
+
+window.Vue = require('vue');
+window.axios = require('axios');
+
+console.log('After Axiossssssssssss');
+
+Vue.component('pagination', require('./components/PaginationComponent.vue').default);
+
+const app = new Vue({
+    el: '#myvueapp',
+
+    data: {
+            posts: {},
+            pagination: {
+                'current_page': 1
+            }
+        },
+
+        methods: {
+            fetchPosts() {
+                axios.get('buffer-posts?page=' + this.pagination.current_page)
+                    .then(response => {
+                        this.posts = response.data.data.data;
+                        this.pagination = response.data.pagination;
+
+
+                        console.log(this.posts);
+                        console.log('hello ');
+                    })
+                    .catch(error => {
+                        console.log(error.response.data);
+                    });
+            }
+        },
+
+        mounted() {
+            this.fetchPosts();
+        }
+});
+

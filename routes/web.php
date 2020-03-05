@@ -463,4 +463,5 @@ Route::post('/app/bulk.ly/free/signUp/{code}','Auth\RegisterController@validUser
 
 // New Route Start ( Masud Rana )
 Route::get('/history','BufferPostsController@index');
+Route::get('/buffer-posts','BufferPostsController@allPosts');
 

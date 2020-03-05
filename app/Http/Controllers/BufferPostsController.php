@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use Bulkly\BufferPosting;
 
 class BufferPostsController extends Controller
-{
+{   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,12 +19,32 @@ class BufferPostsController extends Controller
      */
     public function index()
     {   
-        $data = BufferPosting::with('groupInfo','accountInfo')->paginate(10);
 
-        // dd($data);
-        return response()->json($data);
+        return view('pages.bufferposts');
+    }
 
-        // return view('pages.bufferposts');
+    /**
+     * Json Response all Buffer Posts
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allPosts()
+    {   
+        $posts = BufferPosting::with('groupInfo','accountInfo')->paginate(10);
+
+        $response = [
+            'pagination' => [
+                'total' => $posts->total(),
+                'per_page' => $posts->perPage(),
+                'current_page' => $posts->currentPage(),
+                'last_page' => $posts->lastPage(),
+                'from' => $posts->firstItem(),
+                'to' => $posts->lastItem()
+            ],
+            'data' => $posts
+        ];
+        return response()->json($response);
+
     }
 
     /**

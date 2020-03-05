@@ -43,11 +43,11 @@
 			    <table class="table table-hover table-bordered"> 
 			    	<thead> 
 			    		<tr>
-			    			<th>Account</th>
-			    			<th>Last post sent</th>
-			    			<th># of post sent</th>
-			    			<th>Groups</th>
-			    			<th>Active</th> 
+			    			<th>Group Name</th>
+			    			<th>Group Type</th>
+			    			<th>Account Name</th>
+			    			<th>Post Text</th>
+			    			<th>Time</th>
 			    		</tr> 
 			    	</thead> 
 			    	<tbody> 
@@ -62,6 +62,7 @@
 
 			    	</tbody> 
 			    </table>
+			    <pagination v-if="pagination.last_page > 1" :pagination="pagination" :offset="5" @paginate="fetchPosts()"></pagination>
 			  </div>
 			</div>
 

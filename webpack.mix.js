@@ -20,4 +20,4 @@ mix.styles([
 ], 'public/css/app.css');
 
 
-mix.browserSync('http://app.bulk.dev');
+// mix.browserSync('http://app.bulk.dev');
