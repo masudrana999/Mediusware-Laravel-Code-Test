@@ -3,6 +3,7 @@
 namespace Bulkly\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Bulkly\BufferPosting;
 
 class BufferPostsController extends Controller
 {
@@ -12,8 +13,13 @@ class BufferPostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('pages.bufferposts');
+    {   
+        $data = BufferPosting::with('groupInfo','accountInfo')->paginate(10);
+
+        // dd($data);
+        return response()->json($data);
+
+        // return view('pages.bufferposts');
     }
 
     /**
